@@ -8,3 +8,4 @@ Despite the year beign 2022, bash scripting is still widely used and a really go
 
 Guides:
 - [Intro](/Guides/intro.md)
+- [Shebang](/Guides/shebang.md)
