@@ -9,3 +9,12 @@ Despite the year beign 2022, bash scripting is still widely used and a really go
 Guides:
 - [Intro](/Guides/intro.md)
 - [Shebang](/Guides/shebang.md)
+- [Variables](/Guides/variables.md)
+- [User Input](/Guides/userinput.md)
+- [Special Variables](/Guides/specialvariables.md)
+- [Testing](/Guides/testing.md)
+- [Command Substitution](/Guides/commandsub.md)
+- [String Comparision](/Guides/stringcmp.md)
+- [Connectivity Lab](/Guides/lab.md)
+- [For Loop](/Guides/for.md)
+- [While Loop](/Guides/while.md)
