@@ -18,3 +18,5 @@ Guides:
 - [Connectivity Lab](/Guides/lab.md)
 - [For Loop](/Guides/for.md)
 - [While Loop](/Guides/while.md)
+- [Case](/Guides/case.md)
+- [Functions](/Guides/functions.md)
