@@ -20,3 +20,6 @@ Guides:
 - [While Loop](/Guides/while.md)
 - [Case](/Guides/case.md)
 - [Functions](/Guides/functions.md)
+- [Variable scopes](/Guides/scope.md)
+- [Menu in bash](/Guides/menu.md)
+- [Crontab](/Guides/cron.md)
