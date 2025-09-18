@@ -21,7 +21,7 @@ This is a more complex example.
 ``` bash
 #!/bin/bash
 
-select action in "update upgrade updateandupgrade Quit"
+select action in "update" "upgrade" "updateandupgrade" "Quit"
 do
 	case $REPLY in
 		1)
