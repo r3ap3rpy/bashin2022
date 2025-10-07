@@ -1,39 +1,39 @@
-#!/usr/bin/env bash
-# permconvert.sh — convert between octal and symbolic permissions
+#!/bin/bash
 
-perm="$1"
+permission="$1"
 
-if [[ -z "$perm" ]]; then
-  echo "Usage: $0 <permission>"
-  echo "Example: $0 755  or  $0 rwxr-xr-x"
-  exit 1
+echo "Argument was: $permission"
+
+if [ $# -ne 1 ]; then
+	echo "Usage: 755"
+	echo "       r--r--r--"
+	exit -1
 fi
+if [[ "$permission" =~ ^[0-7]{3}$ ]];then
+	echo "Octal version of the argument!"
+	szimbolumok=("---" "--x" "-w-" "-wx" "r--" "r-x" "rw-" "rwx")
+	karakterek=""
+	for((i=0;i<3;i++));do
+		szamjegy=${permission:i:1}
+		karakterek+="${szimbolumok[szamjegy]}"
 
-# Convert octal → symbolic
-if [[ "$perm" =~ ^[0-7]{3}$ ]]; then
-  symbols=("---" "--x" "-w-" "-wx" "r--" "r-x" "rw-" "rwx")
-  for (( i=0; i<3; i++ )); do
-    digit=${perm:i:1}
-    echo -n "${symbols[digit]}"
-  done
-  echo
-  exit 0
+	done
+	echo "Eredmeny: $karakterek"
+	exit 0
+elif [[ "$permission" =~ ^[r-][w-][x-][r-][w-][x-][r-][w-][x-]$ ]];then
+	echo "Character version"
+	vegeredmeny=""
+	for((i=0;i<9;i+=3)); do
+		harmas=${permission:i:3}
+		reszeredmeny=0
+		[[ ${harmas:0:1} == "r" ]] && ((reszeredmeny+=4))
+		[[ ${harmas:1:1} == "w" ]] && ((reszeredmeny+=2))
+		[[ ${harmas:2:2} == "x" ]] && ((reszeredmeny+=1))
+		vegeredmeny+="$reszeredmeny"
+	done
+	echo "Result: $vegeredmeny"
+	exit 0
+else
+	echo "Invalid argument format: $permission"
+	exit -1
 fi
-
-# Convert symbolic → octal
-if [[ "$perm" =~ ^[r-][w-][x-][r-][w-][x-][r-][w-][x-]$ ]]; then
-  octal=""
-  for (( i=0; i<9; i+=3 )); do
-    tri=${perm:i:3}
-    val=0
-    [[ ${tri:0:1} == "r" ]] && ((val+=4))
-    [[ ${tri:1:1} == "w" ]] && ((val+=2))
-    [[ ${tri:2:1} == "x" ]] && ((val+=1))
-    octal+="$val"
-  done
-  echo "$octal"
-  exit 0
-fi
-
-echo "Error: Input must be either 3-digit octal (e.g. 755) or 9-char symbolic (e.g. rwxr-xr-x)"
-exit 1
