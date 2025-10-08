@@ -3,6 +3,8 @@
 permission="$1"
 
 echo "Argument was: $permission"
+GREEN="\e[32m"
+RESET="\e[0m"
 
 if [ $# -ne 1 ]; then
 	echo "Usage: 755"
@@ -18,7 +20,7 @@ if [[ "$permission" =~ ^[0-7]{3}$ ]];then
 		karakterek+="${szimbolumok[szamjegy]}"
 
 	done
-	echo "Eredmeny: $karakterek"
+	echo "Eredmeny: ${GREEN}$karakterek${RESET}"
 	exit 0
 elif [[ "$permission" =~ ^[r-][w-][x-][r-][w-][x-][r-][w-][x-]$ ]];then
 	echo "Character version"
@@ -31,7 +33,7 @@ elif [[ "$permission" =~ ^[r-][w-][x-][r-][w-][x-][r-][w-][x-]$ ]];then
 		[[ ${harmas:2:2} == "x" ]] && ((reszeredmeny+=1))
 		vegeredmeny+="$reszeredmeny"
 	done
-	echo "Result: $vegeredmeny"
+	echo "Result: ${GREEN}$vegeredmeny${RESET}"
 	exit 0
 else
 	echo "Invalid argument format: $permission"
