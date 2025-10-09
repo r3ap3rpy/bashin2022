@@ -5,6 +5,7 @@ permission="$1"
 echo "Argument was: $permission"
 GREEN="\e[32m"
 RESET="\e[0m"
+RED="\e[31m"
 
 if [ $# -ne 1 ]; then
 	echo "Usage: 755"
@@ -36,6 +37,6 @@ elif [[ "$permission" =~ ^[r-][w-][x-][r-][w-][x-][r-][w-][x-]$ ]];then
 	echo "Result: ${GREEN}$vegeredmeny${RESET}"
 	exit 0
 else
-	echo "Invalid argument format: $permission"
+	echo "Invalid argument format: ${RED}$permission${RESET}"
 	exit -1
 fi
