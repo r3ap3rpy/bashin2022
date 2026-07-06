@@ -23,3 +23,22 @@ Guides:
 - [Variable scopes](/Guides/scope.md)
 - [Menu in bash](/Guides/menu.md)
 - [Crontab](/Guides/cron.md)
+
+A script which knows when it is imported or ran directly.
+
+``` bash
+#!/usr/bin/env bash
+greet() {
+  echo "Hello"
+}
+
+goodbye() {
+  echo "Goodbye"
+}
+
+if ! (return 2>/dev/null); then
+  # we are directly called
+  greet
+  goodbye
+fi
+```
